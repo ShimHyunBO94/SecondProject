@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+<properties>
+
+	<comment>NAMYANG_I</comment>
+	<entry key="project.name">NAMYANG</entry>
+	
+	<entry key="session.user.key">S0001</entry>
+	<entry key="file.upload.dir">/home/nyicomm/admin/uploadDir</entry>
+	
+	<!-- mail api url -->
+	<entry key="api.domain">https://nyiapi.namyangi.com</entry>
+	<!-- mail api url -->
+	<entry key="mall.api.path">/mail/sendEmail</entry>
+	<!-- sms api url -->
+	<entry key="sms.api.path">/msg/singlesms</entry>
+	<!-- talk api url -->
+	<entry key="talk.api.path">/msg/singlekakao</entry>
+
+	<!-- talk sender -->
+	<entry key="kakao.sender">/msg/singlekakao</entry>
+	<!-- 수신거부 -->
+	<entry key="kakao.080">Y</entry>
+	<!-- sms sender -->
+	<entry key="sms.sender">/msg/singlekakao</entry>
+	<!-- sms 수신거부 -->
+	<entry key="use.reject">Y</entry>
+	
+	<entry key="cloud.storage.bucket.name">nyi-community-bucket001</entry>
+	<entry key="cloud.storage.endpoint">https://kr.object.ncloudstorage.com</entry>
+	<entry key="cloud.storage.region.name">kr-standard</entry>
+	<entry key="cloud.storage.access.key">8iw6DsLpFjJhrzddeWRC</entry>
+	<entry key="cloud.storage.secret.key">A5k1czHDv2YH2B0Y2jPXARzKypUEGSanri06MWI8</entry>
+	
+	<entry key="cloud.storage.cdn.endpoint">https://babycdn.namyangi.com</entry>
+	
+	<!-- 임신육아교실 출석체크 링크  -->
+	<entry key="school.attend.link">https://mbaby.namyangi.com/class/attend</entry>
+	
+	<entry key="dev.admin.url">http://devnyadmin.namyangi.com</entry>
+	<entry key="dev.web.url">http://devwww.namyangi.com</entry>
+	
+	<entry key="prod.admin.url">https://babyadmin.namyangi.com</entry>
+	<entry key="prod.web.url">https://baby.namyangi.com</entry>
+	<entry key="prod.mobile.url">https://mbaby.namyangi.com</entry>
+	
+	<entry key="admin.img.path">/admin</entry>
+	
+	<!-- Admin 아래에 들어가는 경로 -->
+	<entry key="admin.img.task.path">/task/borad</entry>
+	<entry key="admin.img.caution.path">/caution/caution</entry>
+	<entry key="admin.img.hospital.path">/care/hospital</entry>
+	<entry key="admin.img.editor.path">/common/editor</entry>
+	<entry key="admin.img.mail.path">/help/mail</entry>
+	<entry key="admin.img.notice.path">/help/notice</entry>
+	<entry key="admin.img.myBook.path">/publish/myBook</entry>
+	
+	<!-- AS-IS 경로 -->
+	<!-- 임신육아교실 강사 사진 경로  -->
+	<entry key="admin.img.babyschool.path">/ny_file/portal/img/class</entry>
+	
+	<!-- kakao map appkey -->
+	<entry key="kakao.map.appkey">db3a6efdb4eaf64737a2e6852d6b470d</entry>
+	
+	<!-- daum postcode 호출 -->
+	<entry key="daum.map.postcode">https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js</entry>
+	
+	<!-- 업로드 경로 -->
+	<entry key="path.diary.mybook">/mybook_folder</entry>
+</properties>

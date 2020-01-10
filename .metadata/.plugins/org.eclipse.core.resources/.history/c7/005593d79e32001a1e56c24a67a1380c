@@ -1,0 +1,36 @@
+package com.namyang.community.admin.vo;
+
+import com.namyang.community.common.vo.PageBase;
+
+public class AdminInfoHistorySearchVo extends PageBase {
+	
+	private String keyword; 		//검색어
+	
+	private String startSearchDate; //등록수정 시작
+	private String endSearchDate; 	//등록수정 종료일
+	
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getStartSearchDate() {
+		return startSearchDate;
+	}
+
+	public void setStartSearchDate(String startSearchDate) {
+		this.startSearchDate = startSearchDate;
+	}
+
+	public String getEndSearchDate() {
+		return endSearchDate;
+	}
+
+	public void setEndSearchDate(String endSearchDate) {
+		this.endSearchDate = endSearchDate;
+	}
+	
+}

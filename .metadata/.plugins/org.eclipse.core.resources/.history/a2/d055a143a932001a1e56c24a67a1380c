@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script type="text/javascript">
+$(function(){
+	$('#logOutBtn').on("click", function(e){
+		e.preventDefault();
+		$.post("<c:url value='/ajax/logout' />", function(response) {
+			if ( response.RESULT_ST == "PASS" ) {
+				alert("로그아웃되었습니다.");
+				location.href="<c:url value='/login' />";
+			}
+			else {
+				alert(response.RESULT_MSG);
+			}
+			
+		});
+		
+	});
+	
+	
+});
+
+</script>
+
+<div class="tglobal">
+	<div class="left">
+		<a href="<c:url value='/admin/view/${sessionScope.S0001.adminId}'/>" class="home" target="_blank">
+			<strong>
+				${sessionScope.S0001.adminNm}
+			</strong> 님</a>
+		<div class="f_l">
+			<a href="#" class="logout" id="logOutBtn">
+				<span class="d_ib_m mg_r3"><i class="nticon ntlocker"></i></span>
+				<span class="d_ib_m">로그아웃</span>
+			</a>
+		</div>
+	</div>
+	<div class="right clearfix">
+		<div class="f_l">
+			<a href="http://220.230.121.57:7800/manager/" target="blank" class="namyanglink">
+				<span class="d_ib_m">인기검색어 바로가기 &gt;</span>
+			</a>
+		</div>
+		<div class="f_l">
+			<a href="https://baby.namyangi.com/" target="blank" class="namyanglink">
+				<span class="d_ib_m">남양아이 바로가기 &gt;</span>
+			</a>
+		</div>
+		<div class="f_l">
+			<a href="${pageContext.request.contextPath}/business/bulletin" class="workboard">
+				<span class="d_ib_m">업무게시판 ${badge}</span>
+			</a>
+		</div>
+	</div>
+</div>

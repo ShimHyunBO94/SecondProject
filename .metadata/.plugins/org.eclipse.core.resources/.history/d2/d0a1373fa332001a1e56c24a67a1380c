@@ -1,0 +1,43 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 기본 -->
+	<definition name="layout" template="/WEB-INF/views/layout/contents.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+	
+	<definition name="common/login" template="/WEB-INF/views/layout/login.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/common/login.jsp" />
+	</definition>
+	
+	<definition name="files/list" template="/WEB-INF/views/files/list.jsp">
+	</definition>
+	
+	<definition name="management/commonCategory" template="/WEB-INF/views/view/management/commonCategory.jsp">
+	</definition>
+	
+	<definition name="benefits/eventSurveyResultExcel" template="/WEB-INF/views/view/benefits/eventSurveyResultExcel.jsp"></definition>
+	<definition name="benefits/surveyResultExcel" template="/WEB-INF/views/view/benefits/surveyResultExcel.jsp"></definition>
+	
+	<definition name="*/preview/*" template="/WEB-INF/views/view/{1}/preview/{2}.jsp"></definition>
+	
+	<definition name="custinfo/pregnancyWeeklyMailPreview" template="/WEB-INF/views/view/custinfo/pregnancyWeeklyMailPreview.jsp"></definition>
+	<definition name="custinfo/monthlyMailPreview" template="/WEB-INF/views/view/custinfo/monthlyMailPreview.jsp"></definition>
+	
+	<definition name="nogrant" template="/WEB-INF/views/view/nogrant.jsp">
+	</definition>
+	
+	<definition name="*" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/views/view/{1}/{1}.jsp" />
+	</definition>
+	
+	<definition name="*/*" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/views/view/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="*/*/*" template="/WEB-INF/views/layout/popupContents.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/view/{1}/{2}/{3}.jsp" />
+	</definition>
+	
+</tiles-definitions>

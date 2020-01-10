@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+<properties>
+	<comment>NAMYANG_I</comment>
+	<!-- 에러 메세지 -->
+	<entry key="SES000">로그인이 필요 합니다.</entry>
+	
+	<entry key="SES001">세션이 만료되었거나 로그인이 필요 합니다.</entry>
+	<entry key="SES002">반갑습니다.</entry>
+	<entry key="SES003">ID와 PASSWORD를 확인하세요</entry>
+	<entry key="SES008">승인 대기중입니다.</entry>
+	<entry key="SES009">로그아웃 되었습니다.</entry>
+	<entry key="SES010">권한이 없습니다.</entry>
+	<entry key="SES011"><![CDATA[등록 불가능한 파일입니다.<br/><br/>* 워드, 엑셀, 파워포인트, PDF, 한글 파일만<br/> 등록가능합니다.]]></entry>
+	<entry key="SES012">인증번호를 입력하세요.</entry>
+	<entry key="SES013">인증번호가 일치하지 않습니다.</entry>
+	<entry key="ERR001"><![CDATA[ 시스템 에러입니다.<br/>관리자에게 문의 하세요 ]]></entry>
+	<entry key="ERR002">오류가 발생했습니다. 관리자에게 문의하세요</entry>
+	
+	
+	<entry key="LGN000">님 환영합니다.</entry>
+	<entry key="LGN001">아이디를 입력하세요</entry>
+	<entry key="LGN002">비밀번호를 입력하세요.</entry>
+	<entry key="LGN003">존재하지 않는 아이디입니다.</entry>
+	<entry key="LGN004">비밀번호가 맞지 않습니다. 10회 오류 시 로그인이 제한됩니다.</entry>
+	<entry key="LGN005">접속 비밀번호 10회오류로 인해 비밀번호 찾기를 통해 다시 로그인 해주세요</entry>
+	
+	<entry key="LGN098">로그아웃이 실패되었습니다.</entry>
+	<entry key="LGN099">로그아웃이 되었습니다.</entry>
+	
+	<entry key="VLD000">필수 입력 값입니다.</entry>
+	<entry key="VLD001">이메일 형식이 아닙니다.</entry>
+	<entry key="VLD002">동일한 데이터가 존재합니다.</entry>
+	<entry key="VLD003">사용 가능한 값입니다.</entry>
+	
+	<entry key="SUC001">등록 되었습니다.</entry>
+	<entry key="SUC002">수정 되었습니다.</entry>
+	<entry key="SUC003">전송 되었습니다.</entry>
+	
+	<entry key="DEL000">삭제하시겠습니까?</entry>
+	<entry key="DEL001">삭제 되었습니다.</entry>
+	<entry key="DEL002">삭제 할 데이터를 선택하세요.</entry>
+	
+</properties>

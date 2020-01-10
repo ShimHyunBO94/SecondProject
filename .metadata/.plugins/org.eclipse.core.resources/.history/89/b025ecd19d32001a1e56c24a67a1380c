@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipnc.sample.mapper.SampleMapper">
+
+	<select id="select" parameterType="sampleVo" resultType="sampleVo"">
+	</select>
+	
+	<insert id="insert" parameterType="sampleVo" resultType="sampleVo"">
+	</insert>
+	
+	<update id="update" parameterType="sampleVo" resultType="sampleVo"">
+	</update>
+	
+	<delete id="delete" parameterType="sampleVo" resultType="sampleVo"">
+	</delete>
+	
+</mapper>

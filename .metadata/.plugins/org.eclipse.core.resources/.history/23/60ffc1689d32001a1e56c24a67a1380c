@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.namyang.community.admin.mapper.AdminGroupMapper">
+
+	<resultMap type="groupVo" id="groupVoMap">
+		<id column="GROUP_ID" property="groupId" />
+		<result column="GROUP_NAME" property="groupName" />
+		<result column="GROUP_DESC" property="groupDesc" />
+		<result column="DEL_YN" property="delYn" />
+		<result column="ADMIN_ID" property="adminId" />
+		<result column="REG_DATE" property="regDate" />
+		<result column="ADMIN_COUNT" property="adminCount" />
+		<association property="loginVo" javaType="loginVo">
+			<result column="ADMIN_ID" property="adminId" />
+			<result column="ADMINNM" property="adminNm" />
+		</association>
+		<collection property="menuList" ofType="menuVo">
+			<result column="MENU_NAME" property="menuName" />
+		</collection>
+	</resultMap>
+
+	<select id="getAllGroups" parameterType="groupSearchVo" resultMap="groupVoMap">
+		SELECT	G.GROUP_ID
+				, G.GROUP_NAME
+				, G.GROUP_DESC
+				, G.DEL_YN
+				, G.ADMIN_ID
+				, NYC_OP.DBO.FN_DECRYPT_AES(A.ADMINNM) AS ADMINNM
+				, FORMAT(G.REG_DATE, 'yyyy-MM-dd HH:mm') AS REG_DATE
+				, M.MENU_NAME
+				, (
+					SELECT	COUNT(1)
+					FROM	TBL_ADMN_ID A
+					WHERE	A.GROUP_ID = G.GROUP_ID AND A.DelFlag = 'N' 
+				) AS ADMIN_COUNT
+		FROM	TBL_ADMN_GRP G
+		INNER	JOIN TBL_ADMN_ID A
+		ON		G.ADMIN_ID = A.ADMINID
+		LEFT	OUTER JOIN TBL_ADMN_MN_MAP MM
+		ON		G.GROUP_ID = MM.GROUP_ID
+		INNER	JOIN TBL_ADMN_MN M
+		ON		M.MENU_ID = MM.MENU_ID
+		AND		M.MENU_DEPTH = 1		
+		WHERE	G.DEL_YN = 'N'
+		<if test='searchKeyword != null and searchKeyword != ""'>
+			<if test='searchType == "name"'>
+		AND		G.GROUP_NAME LIKE '%' + #{searchKeyword} + '%'
+			</if>
+			<if test='searchType == "adminName"'>
+		AND		A.ADMINNM = NYC_OP.DBO.FN_ENCRYPT_AES(#{searchKeyword})
+			</if>
+			<if test='searchType == "id"'>
+		AND		G.ADMIN_ID LIKE '%' + #{searchKeyword} + '%'
+			</if>
+		</if>
+		ORDER	BY G.REG_DATE DESC
+	</select>
+	
+	<insert id="insertOneGroup" parameterType="groupVo">
+		INSERT	INTO TBL_ADMN_GRP (
+			GROUP_NAME
+			, GROUP_DESC
+			, DEL_YN
+			, ADMIN_ID
+			, REG_DATE
+		)
+		VALUES (
+			#{groupName}
+			, #{groupDesc}
+			, 'N'
+			, #{adminId}
+			, GETDATE()
+		)
+		<selectKey keyProperty="groupId" resultType="int" order="AFTER">
+	        SELECT IDENT_CURRENT('TBL_ADMN_GRP')
+	    </selectKey>
+	</insert>
+	
+	<insert id="insertOneGroupMappedMenu" parameterType="groupMappedVo">
+		INSERT	INTO TBL_ADMN_MN_MAP (
+			MENU_ID
+			, GROUP_ID
+		)
+		VALUES
+		<foreach collection="menuList" item="menu" separator="," open="" close="">
+		(	
+			#{menu.menuId}
+			, #{groupId}
+		)
+		</foreach>
+	</insert>
+	
+	<update id="deleteGroups" parameterType="java.util.List">
+		UPDATE	TBL_ADMN_GRP
+		SET		DEL_YN = 'Y'
+		WHERE	GROUP_ID IN
+		<foreach collection="list" item="groupId" open="(" close=")" separator=", " >
+			#{groupId}
+		</foreach>
+	</update>
+	
+	<select id="isExistsGroupName" parameterType="string" resultType="_int">
+		SELECT	COUNT(1)
+		FROM	TBL_ADMN_GRP
+		WHERE	GROUP_NAME = #{groupName}
+	</select>
+	
+	<select id="getOneGroup" parameterType="_int" resultMap="groupVoMap">
+		SELECT	G.GROUP_ID
+				, G.GROUP_NAME
+				, G.GROUP_DESC
+				, G.DEL_YN
+				, G.ADMIN_ID
+				, NYC_OP.DBO.FN_DECRYPT_AES(A.ADMINNM) AS ADMINNM
+				, FORMAT(G.REG_DATE, 'yyyy-MM-dd HH:mm') AS REG_DATE
+				, M.MENU_NAME
+				, (
+					SELECT	COUNT(1)
+					FROM	TBL_ADMN_ID A
+					WHERE	A.GROUP_ID = G.GROUP_ID
+				) AS ADMIN_COUNT
+		FROM	TBL_ADMN_GRP G
+		INNER	JOIN TBL_ADMN_ID A
+		ON		G.ADMIN_ID = A.ADMINID
+		LEFT	OUTER JOIN TBL_ADMN_MN_MAP MM
+		ON		G.GROUP_ID = MM.GROUP_ID
+		INNER	JOIN TBL_ADMN_MN M
+		ON		M.MENU_ID = MM.MENU_ID
+		AND		M.MENU_DEPTH = 1		
+		WHERE	G.DEL_YN = 'N'
+		AND		G.GROUP_ID = #{groupId}
+	</select>
+	
+	<resultMap type="groupMappedVo" id="groupMappedVoMap">
+		<id column="GROUP_ID" property="groupId" />
+		<collection property="menuList" ofType="menuVo">
+			<result column="SEQ" property="seq" />
+			<result column="MENU_ID" property="menuId" />
+			<result column="PARENT_ID" property="parentId" />
+			<result column="MENU_DEPTH" property="menuDepth" />
+			<result column="MENU_NAME" property="menuName" />
+			<result column="MENU_URL" property="menuUrl" />
+			<result column="IS_VIEW" property="isView" />
+			<result column="USE_YN" property="useYn" />
+			<result column="DEL_YN" property="delYn" />
+			<result column="ORDER_NUMBER" property="orderNumber" />
+			<result column="REG_DT" property="regDt" />
+		</collection>
+	</resultMap>
+	
+	<select id="getSelectedMenu" parameterType="_int" resultMap="groupMappedVoMap">
+		SELECT	MM.GROUP_ID
+				, M.SEQ
+				, MM.MENU_ID
+				, M.PARENT_ID
+				, M.MENU_DEPTH
+				, M.MENU_NAME
+				, M.MENU_URL
+				, M.IS_VIEW
+				, M.USE_YN
+				, M.DEL_YN
+				, M.ORDER_NUMBER
+				, M.REG_DT
+		FROM	TBL_ADMN_MN_MAP MM
+		INNER	JOIN TBL_ADMN_MN M
+		ON		MM.MENU_ID = M.MENU_ID
+		AND		M.DEL_YN = 'N'
+		WHERE	MM.GROUP_ID = #{groupId}
+		ORDER	BY CONVERT(VARCHAR(5),  REPLICATE('0', 5 - LEN(CONVERT(VARCHAR, MM.MENU_ID))) + CONVERT(VARCHAR, MM.MENU_ID)) ASC
+				, CONVERT(VARCHAR(5),  REPLICATE('0', 5 - LEN(CONVERT(VARCHAR, M.PARENT_ID))) + CONVERT(VARCHAR, M.PARENT_ID)) ASC
+				, M.ORDER_NUMBER ASC
+	</select>
+	
+	<update id="updateOneGroup" parameterType="groupVo">
+		UPDATE	TBL_ADMN_GRP
+		SET		GROUP_NAME = #{groupName}
+				, ADMIN_ID = #{adminId}
+				, REG_DATE = GETDATE()
+		WHERE	GROUP_ID = #{groupId}
+	</update>
+	
+	<delete id="deleteGroupMappedMenu" parameterType="_int">
+		DELETE
+		FROM	TBL_ADMN_MN_MAP
+		WHERE	GROUP_ID = #{groupId}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,14 @@
+package com.ipnc.sample.vo;
+
+public class SampleVo{
+	
+	private String sample; 		//sample
+
+	public String getSample() {
+		return sample;
+	}
+
+	public void setSample(String sample) {
+		this.sample = sample;
+	}
+}

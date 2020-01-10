@@ -1,0 +1,167 @@
+package com.namyang.community.admin.controller;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.namyang.community.admin.service.AdminGroupService;
+import com.namyang.community.admin.vo.GroupMappedVo;
+import com.namyang.community.admin.vo.GroupSearchVo;
+import com.namyang.community.admin.vo.GroupVo;
+import com.namyang.community.common.Common;
+import com.namyang.community.common.ajax.AjaxResult;
+import com.namyang.community.login.vo.LoginVo;
+import com.namyang.community.menu.vo.MenuVo;
+
+@Controller
+@RequestMapping("/sample")
+public class AdminGroupController extends Common {
+
+	@Autowired(required=false) 
+	@Qualifier("adminGroupServiceImpl")
+	private AdminGroupService adminGroupService;
+	
+	@RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView viewGroupListPage(@ModelAttribute GroupSearchVo groupSearchVo) {
+		
+		xssClean(groupSearchVo);
+		
+		ModelAndView view = new ModelAndView("admin/groupList");
+		
+		List<GroupVo> groupList = adminGroupService.getAllGroups(groupSearchVo);
+		groupList = groupList.stream()
+							.map(g -> {
+								String menu = g.getMenuList().stream()
+															.map(m -> m.getMenuName())
+															.collect(Collectors.joining("/"));
+								g.setMenu(menu);
+								return g;
+							})
+							.collect(Collectors.toList());
+				
+		
+		view.addObject("groupList", groupList);
+		view.addObject("groupSearchVo", groupSearchVo);
+		return view;
+		
+	}
+	
+	@GetMapping("/regist")
+	public ModelAndView viewRegistGroupPage() {
+		
+		ModelAndView view = new ModelAndView("admin/groupRegist");
+		List<MenuVo> menuList = adminGroupService.getMenuConnected()
+												.stream()
+												.filter(m -> m.getMenuDepth() <= 2)
+												.collect(Collectors.toList());
+		view.addObject("menuList", menuList);
+		
+		return view;
+		
+	}
+	
+	@GetMapping("/view/{groupId}")
+	public ModelAndView viewRegistGroupPage(@PathVariable int groupId) {
+		
+		ModelAndView view = new ModelAndView("admin/groupRegist");
+		view.addObject("group", adminGroupService.getOneGroup(groupId));
+		view.addObject("selectedMenuList", adminGroupService.getSelectedMenu(groupId));
+		
+		List<MenuVo> menuList = adminGroupService.getMenuConnected()
+												.stream()
+												.filter(m -> m.getMenuDepth() <= 2)
+												.collect(Collectors.toList());
+		
+		view.addObject("menuList", menuList);
+		
+		return view;
+		
+	}
+	
+	@PostMapping("/view/{groupId}-proc")
+	@ResponseBody
+	public AjaxResult getGroupMappedMenu(@PathVariable int groupId) {
+		
+		GroupMappedVo mappedMenu = adminGroupService.getSelectedMenu(groupId);
+		List<MenuVo> menuList = adminGroupService.getMenuConnected()
+												.stream()
+												.filter(m -> m.getMenuDepth() <= 2)
+												.filter(m -> mappedMenu.getMenuList().stream().anyMatch(mm -> mm.getMenuId().equals(m.getMenuId())))
+												.collect(Collectors.toList());
+		
+		return new AjaxResult(menuList);
+		
+	}
+	
+	@PostMapping("/get-proc")
+	@ResponseBody
+	public AjaxResult getAllGroup() {
+		return new AjaxResult(adminGroupService.getAllGroups(new GroupSearchVo()));
+		
+	}
+	
+	@PostMapping("/regist/duplicate/{groupName}-proc")
+	@ResponseBody
+	public AjaxResult isDuplicateGruopName(@PathVariable String groupName) {
+		return new AjaxResult(adminGroupService.isExistsGroupName(groupName) ? "F" : "T");
+		
+	}
+	
+	@PostMapping("/regist-proc")
+	@ResponseBody
+	public AjaxResult doRegistGroup(
+				@RequestParam String groupName
+				, @RequestParam List<String> menuId
+				, @SessionAttribute("S0001") LoginVo loginVo
+			) {
+		groupName = xssClean(groupName);
+		menuId = xssClean(menuId);
+		adminGroupService.insertOneGroup(new GroupVo(groupName, loginVo.getAdminId()), menuId);
+		
+		return new AjaxResult("등록되었습니다.");
+		
+	}
+	
+	@PostMapping("/modify/{groupId}-proc")
+	@ResponseBody
+	public AjaxResult doModifyGroup(
+				@PathVariable int groupId
+				, @RequestParam String groupName
+				, @RequestParam List<String> menuId
+				, @SessionAttribute("S0001") LoginVo loginVo
+			) {
+		groupName = xssClean(groupName);
+		menuId = xssClean(menuId);
+		adminGroupService.updateOneGroup(new GroupVo(groupId, groupName, loginVo.getAdminId()), menuId);
+		
+		return new AjaxResult("수정되었습니다.");
+		
+	}
+	
+	@PostMapping("/delete-proc")
+	@ResponseBody
+	public AjaxResult doDeleteGroup(
+				@RequestParam List<Integer> deleteId
+			) {
+		
+		adminGroupService.deleteGroups(deleteId);
+		
+		return new AjaxResult("삭제되었습니다.");
+		
+	}
+			
+	
+}

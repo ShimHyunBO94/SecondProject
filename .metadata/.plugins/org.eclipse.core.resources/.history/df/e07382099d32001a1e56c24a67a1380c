@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="callSettersOnNulls" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<!-- css -->
+				
+		<typeAlias type="com.namyang.community.site.vo.KeywordVo" alias="keywordVo" />
+		
+		<typeAlias type="com.namyang.community.member.vo.MemberVo" alias="memberVo" />
+		<typeAlias type="com.namyang.community.login.vo.LoginVo" alias="loginVo" />
+		
+		<typeAlias type="com.namyang.community.contents.vo.SourceVo" alias="sourceVo" />
+		<typeAlias type="com.namyang.community.contents.vo.SourceSearchVo" alias="sourceSearchVo" />
+		<typeAlias type="com.namyang.community.contents.vo.MemoVo" alias="memoVo" />
+		<typeAlias type="com.namyang.community.contents.vo.ContentVo" alias="contentVo" />
+		<typeAlias type="com.namyang.community.contents.vo.ContentSearchVo" alias="contentSearchVo" />
+		<typeAlias type="com.namyang.community.contents.vo.ParagraphVo" alias="paragraphVo" />
+		<typeAlias type="com.namyang.community.contents.vo.CodeVo" alias="codeVo" />
+
+		
+		<!-- ljk -->
+		<typeAlias type="com.namyang.community.care.vo.BreastMilkSearchVo" alias="breastMilkSearchVo"/>
+		<typeAlias type="com.namyang.community.care.vo.BreastMilkVo" alias="breastMilkVo"/>
+		<typeAlias type="com.namyang.community.care.vo.BreastMilkResultVo" alias="breastMilkResultVo"/>
+		<typeAlias type="com.namyang.community.care.vo.BreastMilkResult1stVo" alias="breastMilkResult1stVo"/>
+		<typeAlias type="com.namyang.community.care.vo.BreastMilkResult2ndVo" alias="breastMilkResult2ndVo"/>
+		<typeAlias type="com.namyang.community.care.vo.BreastMilkExcelVo" alias="breastMilkExcelVo"/>
+		<typeAlias type="com.namyang.onepass.vo.MbrVo" alias="mbrVo"/>
+		
+		<typeAlias type="com.namyang.community.common.product.vo.ProductVo" alias="productVo"/>
+		<typeAlias type="com.namyang.community.common.product.vo.ProductSearchVo" alias="productSearchVo"/>
+		
+		<!-- jmc -->
+		<typeAlias type="com.namyang.community.site.vo.AgreementVo" alias="agreementVo" />
+		<typeAlias type="com.namyang.community.site.vo.AppVersionVo" alias="appVersionVo" />
+		
+		<typeAlias type="com.namyang.community.menu.vo.MenuVo" alias="menuVo" />
+		
+		<typeAlias type="com.namyang.community.benefit.event.vo.WinnerVo" alias="winnerVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.WinnerSearchVo" alias="winnerSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventVo" alias="eventVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventExcelVo" alias="eventExcelVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventSearchVo" alias="eventSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.PresentVo" alias="presentVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventApplicantVo" alias="eventApplicantVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventApplicantSearchVo" alias="eventApplicantSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventReplyVo" alias="eventReplyVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventReplySearchVo" alias="eventReplySearchVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventReplyExcelVo" alias="eventReplyExcelVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventReReplyExcelVo" alias="eventReReplyExcelVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventWinnerFromExcelVo" alias="eventWinnerFromExcelVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventWinnerVo" alias="eventWinnerVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventStatisticsVo" alias="eventStatisticsVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventStatisticsSearchVo" alias="eventStatisticsSearchVo" />
+		
+		<typeAlias type="com.namyang.community.benefit.winner.vo.AllWinnerVo" alias="allWinnerVo" />
+		<typeAlias type="com.namyang.community.benefit.winner.vo.AllWinnerSearchVo" alias="allWinnerSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.winner.vo.AllWinnerAnnouncementVo" alias="allWinnerAnnouncementVo" />
+		
+		<typeAlias type="com.namyang.community.benefit.factory.vo.FactoryVo" alias="factoryVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.FactorySearchVo" alias="factorySearchVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.WarningUseVo" alias="warningUseVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.LocationVo" alias="locationVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.TourApplicantorSearchVo" alias="tourApplicantorSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.TourApplicantorVo" alias="tourApplicantorVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.FactoryStatisticsSearchVo" alias="factoryStatisticsSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.FactoryStatisticsVo" alias="factoryStatisticsVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.FactoryReviewVo" alias="factoryReviewVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.FactoryReviewSearchVo" alias="factoryReviewSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.factory.vo.FactoryReviewReplyVo" alias="factoryReviewReplyVo" />
+		
+		<typeAlias type="com.namyang.community.common.category.vo.CategoryVo" alias="categoryVo" />
+		
+		<typeAlias type="com.namyang.community.help.vo.QuestionCategoryVo" alias="questionCategoryVo" />
+		<typeAlias type="com.namyang.community.help.vo.OneToOneSearchVo" alias="oneToOneSearchVo" />
+		<typeAlias type="com.namyang.community.help.vo.OneToOneQuestionVo" alias="oneToOneQuestionVo" />
+		<typeAlias type="com.namyang.community.help.vo.StatisticDayVo" alias="statisticDayVo" />
+		<typeAlias type="com.namyang.community.help.vo.StatisticClassificationVo" alias="statisticClassificationVo" />
+		<typeAlias type="com.namyang.community.help.vo.ForwardToAnotherAdminRequestVo" alias="forwardToAnotherAdminRequestVo" />
+		<typeAlias type="com.namyang.community.help.vo.ForwardQuestionsVo" alias="forwardQuestionsVo" />
+		<typeAlias type="com.namyang.community.help.vo.AnotherProcessVo" alias="anotherProcessVo" />
+		<typeAlias type="com.namyang.community.help.vo.OneToOneQuestionReplyVo" alias="oneToOneQuestionReplyVo" />
+		<typeAlias type="com.namyang.community.help.vo.FAQVo" alias="faqVo" />
+		<typeAlias type="com.namyang.community.help.vo.NoticeAttachFileVo" alias="noticeAttachFileVo" />
+		
+		<typeAlias type="com.namyang.community.help.vo.ProposalVo" alias="proposalVo" />
+		<typeAlias type="com.namyang.community.help.vo.ProposalSearchVo" alias="proposalSearchVo" />
+
+		
+		<typeAlias type="com.namyang.community.caution.vo.CautionVo" alias="cautionVo" />
+		
+		<typeAlias type="com.namyang.community.care.vo.HospitalVo" alias="hospitalVo" />
+		<typeAlias type="com.namyang.community.care.vo.HospitalSearchVo" alias="hospitalSearchVo" />
+		<typeAlias type="com.namyang.community.care.vo.HospitalSubjectVo" alias="hospitalSubjectVo" />
+
+		<typeAlias type="com.namyang.community.survey.vo.ResearchVo" alias="researchVo" />
+		<typeAlias type="com.namyang.community.survey.vo.PollVo" alias="pollVo" />
+		<typeAlias type="com.namyang.community.survey.vo.OnePollExVo" alias="onePollExVo" />
+		<typeAlias type="com.namyang.community.survey.vo.DeletePollVo" alias="deletePollVo" />
+		<typeAlias type="com.namyang.community.survey.vo.PollTableVo" alias="pollTableVo" />
+		<typeAlias type="com.namyang.community.survey.vo.PollTableTypeRowVo" alias="pollTableTypeRowVo" />
+		<typeAlias type="com.namyang.community.survey.vo.PollTableTypeAnswerVo" alias="pollTableTypeAnswerVo" />
+		
+		<typeAlias type="com.namyang.community.admin.vo.GroupSearchVo" alias="groupSearchVo" />
+		<typeAlias type="com.namyang.community.admin.vo.GroupVo" alias="groupVo" />
+		<typeAlias type="com.namyang.community.admin.vo.GroupMappedVo" alias="groupMappedVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminVo" alias="adminVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminSearchVo" alias="adminSearchVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminModifyVo" alias="adminModifyVo" />
+		
+		<typeAlias type="com.namyang.community.login.vo.FindIdOrPasswordVo" alias="findIdOrPasswordVo" />
+		<typeAlias type="com.namyang.community.login.vo.ChangePasswordVo" alias="changePasswordVo" />
+		
+		<typeAlias type="com.namyang.community.files.vo.FilesVo" alias="filesVo" />
+		<typeAlias type="com.namyang.community.files.vo.FilesSearchVo" alias="filesSearchVo" />
+		
+		<typeAlias type="com.namyang.community.story.vo.StoryRestoreVo" alias="storyRestoreVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryBookSearchVo" alias="storyBookSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryBookVo" alias="storyBookVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryBookChildVo" alias="storyBookChildVo" />
+		<typeAlias type="com.namyang.community.story.vo.ChildVo" alias="childVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryBookStatisticsSearchVo" alias="storyBookStatisticsSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryBookStatisticsVo" alias="storyBookStatisticsVo" />
+		<typeAlias type="com.namyang.community.story.vo.StorySearchVo" alias="storySearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryVo" alias="storyVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryStatisticsSearchVo" alias="storyStatisticsSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryStatisticsVo" alias="storyStatisticsVo" />
+		<typeAlias type="com.namyang.community.story.vo.ConnectedStorySearchVo" alias="connectedStorySearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.ConnectedStoryVo" alias="connectedStoryVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryBookSuccessionVo" alias="storyBookSuccessionVo" />
+		<typeAlias type="com.namyang.community.story.vo.DeleteStoryBookVo" alias="deleteStoryBookVo" />
+		<typeAlias type="com.namyang.community.story.vo.DeleteStoryBookSearchVo" alias="deleteStoryBookSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.CouponVo" alias="couponVo" />
+		<typeAlias type="com.namyang.community.story.vo.CouponSearchVo" alias="couponSearchVo" />
+		
+		<typeAlias type="com.namyang.community.publish.vo.MyBookVo" alias="myBookVo" />
+		<typeAlias type="com.namyang.community.publish.vo.MyBookSearchVo" alias="myBookSearchVo" />
+		<typeAlias type="com.namyang.community.publish.vo.OrderMyBookSearchVo" alias="orderMyBookSearchVo" />
+		<typeAlias type="com.namyang.community.publish.vo.XMLDownloadVo" alias="xmlDownloadVo" />
+		<typeAlias type="com.namyang.community.publish.vo.MyBookOrderDetailVo" alias="myBookOrderDetailVo" />
+		
+		<typeAlias type="com.namyang.community.history.vo.HistoryVo" alias="historyVo" />
+		
+		<typeAlias type="com.namyang.community.custinfo.vo.GeneralSizeVo" alias="generalSizeVo" />
+
+		<!-- asj -->
+		<!-- 테마커뮤니티 -->
+		<typeAlias type="com.namyang.community.benefit.theme.vo.ThemeVo" alias="themeVo" />
+		<typeAlias type="com.namyang.community.benefit.theme.vo.ThemeSearchVo" alias="themeSearchVo" />
+		<!-- 설문결과  -->
+		<typeAlias type="com.namyang.community.survey.vo.AnswerVo" alias="answerVo" />
+		<typeAlias type="com.namyang.community.survey.vo.AnswerSearchVo" alias="answerSearchVo" />
+		<!-- 댓글리스트 -->
+		<typeAlias type="com.namyang.community.benefit.theme.vo.ThemeCommentVo" alias="themeCommentVo" />
+		<typeAlias type="com.namyang.community.benefit.theme.vo.ThemeCommentSearchVo" alias="themeCommentSearchVo" />
+		<!-- 태그추가 -->
+		<typeAlias type="com.namyang.community.common.tag.vo.TagVo" alias="tagVo" />
+		<typeAlias type="com.namyang.community.common.tag.vo.TagSearchVo" alias="tagSearchVo" />
+		<!-- 남양설문조사 -->
+		<typeAlias type="com.namyang.community.benefit.nySurvey.vo.NYsurveyVo" alias="nySurveyVo" />
+		<typeAlias type="com.namyang.community.benefit.nySurvey.vo.NySurveyTargetVo" alias="nySurveyTargetVo" />
+		<typeAlias type="com.namyang.community.benefit.nySurvey.vo.NYsurveySearchVo" alias="nySurveySearchVo" />
+		<typeAlias type="com.namyang.community.benefit.nySurvey.vo.PriAgreeVo" alias="priAgreeVo" />
+		<typeAlias type="com.namyang.community.benefit.nySurvey.vo.PollJoinListExcelVo" alias="pollJoinListExcelVo" />
+		<typeAlias type="com.namyang.community.benefit.nySurvey.vo.AnswerExcelVo" alias="answerExcelVo" />
+		<!-- 스토리댓글 -->
+		<typeAlias type="com.namyang.community.story.vo.StoryCommentSearchVo" alias="storyCommentSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.StoryCommentVo" alias="storyCommentVo" />
+		<!-- 이웃/가족관리 -->
+		<typeAlias type="com.namyang.community.story.vo.RelationManageSearchVo" alias="relationManageSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.RelationManageVo" alias="relationManageVo" />
+		<!-- 스탬프/쿠폰관리 -->
+		<typeAlias type="com.namyang.community.story.vo.StampSearchVo" alias="stampSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.StampVo" alias="stampVo" />
+		<!-- 출판후기관리 -->
+		<typeAlias type="com.namyang.community.story.vo.PublicationReviewSearchVo" alias="publicationReviewSearchVo" />
+		<typeAlias type="com.namyang.community.story.vo.PublicationReviewVo" alias="publicationReviewVo" />
+		<!-- 패스워드 재발급 이력 -->
+		<typeAlias type="com.namyang.community.admin.vo.PwIssueSearchVo" alias="pwIssueSearchVo" />
+		<typeAlias type="com.namyang.community.admin.vo.PwIssueVo" alias="pwIssueVo" />
+		<!-- 개인정보조회이력 -->
+		<typeAlias type="com.namyang.community.admin.vo.PersonalInfoSearchVo" alias="personalInfoSearchVo" />
+		<typeAlias type="com.namyang.community.admin.vo.PersonalInfoVo" alias="personalInfoVo" />
+		<!-- 운영자정보변경이력 -->
+		<typeAlias type="com.namyang.community.admin.vo.AdminInfoHistorySearchVo" alias="infoHisSearchVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminInfoHistoryVo" alias="infoHisVo" />
+		
+		<!-- hwk -->
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventWinningHistoryVo" alias="eventWinningHistoryVo" />
+		<typeAlias type="com.namyang.community.benefit.event.vo.EventWinningHistorySearchVo" alias="eventWinningHistorySearchVo" />
+		<typeAlias type="com.namyang.community.site.vo.PopupVo" alias="popupVo" />
+		<typeAlias type="com.namyang.community.site.vo.PopupSearchVo" alias="popupSearchVo" />
+		<typeAlias type="com.namyang.community.help.vo.ProfessionalQuestionVo" alias="professionalQuestionVo" />
+		<typeAlias type="com.namyang.community.help.vo.ProfessionalSearchVo" alias="professionalSearchVo" />
+		<typeAlias type="com.namyang.community.help.vo.ProfessionalQuestionReplyVo" alias="professionalQuestionReplyVo" />
+		<typeAlias type="com.namyang.community.help.vo.ProfessionalQuestionFileVo" alias="professionalQuestionFileVo" />
+		<typeAlias type="com.namyang.community.help.vo.MailSendVo" alias="mailSendVo" />
+		<typeAlias type="com.namyang.community.help.vo.MailSendSearchVo" alias="mailSendSearchVo" />
+		
+		<!-- pjh -->
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolVo" alias="babySchoolVo" />
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolExcelVo" alias="babySchoolExcelVo" />
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolApplicantExcelVo" alias="babySchoolApplicantExcelVo" />
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolWarningVo" alias="babySchoolWarningVo" />
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolWinnerVo" alias="babySchoolWinnerVo" />
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolStatisticsSearchVo" alias="babySchoolStatisticsSearchVo" />
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolStatisticsVo" alias="babySchoolStatisticsVo" />
+		<typeAlias type="com.namyang.community.benefit.babySchool.vo.BabySchoolReviewVo" alias="babySchoolReviewVo" />
+		
+		<typeAlias type="com.namyang.community.help.vo.LMSVo" alias="lmsVo" />
+		
+		
+		<!-- shb -->
+		<typeAlias type="com.namyang.community.site.vo.SearchVo" alias="searchVo" />
+		<typeAlias type="com.namyang.community.site.vo.TagManagementVo" alias="tagManagementVo" />
+		<typeAlias type="com.namyang.community.site.vo.ProhibitedVo" alias="prohibitedVo" />
+		<typeAlias type="com.namyang.community.business.vo.BusinessBulletinVo" alias="businessBulletinVo" />
+		<typeAlias type="com.namyang.community.care.vo.BabydongVo" alias="babydongVo" />
+		<typeAlias type="com.namyang.community.site.vo.ContentsStatisticsVo" alias="contentsStatisticsVo" />
+		<typeAlias type="com.namyang.community.site.vo.SearchStatisticsVo" alias="searchStatisticsVo" />
+		<typeAlias type="com.namyang.community.site.vo.TagStatisticsVo" alias="tagStatisticsVo" />
+		<typeAlias type="com.namyang.community.contents.vo.WeeklyInfoVo" alias="weeklyInfoVo" />
+		<typeAlias type="com.namyang.community.contents.vo.DailyInfoVo" alias="dailyInfoVo" />
+		<typeAlias type="com.namyang.community.help.vo.SpoonApplyVo" alias="spoonApplyVo" />
+		<typeAlias type="com.namyang.community.member.vo.MemberInfoVo" alias="memberInfoVo" />
+		<typeAlias type="com.namyang.community.member.vo.DeliveryVo" alias="deliveryVo" />
+		<typeAlias type="com.namyang.community.admin.vo.DownloadLogVo" alias="downloadLogVo" />
+		<typeAlias type="com.namyang.community.admin.vo.DownloadExeclVo" alias="downloadExeclVo" />
+		<typeAlias type="com.namyang.community.common.metadata.vo.MetaDataVo" alias="metaDataVo"/>
+		
+		<!-- hong -->
+		<typeAlias type="com.namyang.community.site.vo.BannerVo" alias="bannerVo" />
+		<typeAlias type="com.namyang.community.site.vo.BannerRowVo" alias="bannerRowVo" />
+		<typeAlias type="com.namyang.community.site.vo.BannerRcmdVo" alias="bannerRcmdVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminLogVo" alias="adminLogVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminLogSearchVo" alias="adminLogSearchVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminLogAccessExcelVo" alias="adminLogAccessExcelVo" />
+		<typeAlias type="com.namyang.community.admin.vo.AdminLogLoginExcelVo" alias="adminLogLoginExcelVo" />
+		<typeAlias type="com.namyang.community.site.vo.DisplayContentsSearchVo" alias="displayContentsSearchVo" />
+		<typeAlias type="com.namyang.community.site.vo.DisplayContentsVo" alias="displayContentsVo" />
+		
+		<!-- phs -->
+		<typeAlias type="com.namyang.community.custinfo.vo.BeforeVo" alias="BeforeVo" />
+		<typeAlias type="com.namyang.community.custinfo.vo.BeforeSearchVo" alias="BeforeSearchVo" />
+		<typeAlias type="com.namyang.community.custinfo.vo.AfterVo" alias="AfterVo" />
+		<typeAlias type="com.namyang.community.custinfo.vo.AfterSearchVo" alias="AfterSearchVo" />
+		
+		<!-- kdk -->
+		<typeAlias type="com.namyang.community.custinfo.vo.PregnancyMailBannerVo" alias="pregnancyMailBannerVo" />
+		<typeAlias type="com.namyang.community.custinfo.vo.PregnancyScheduleVo" alias="pregnancyScheduleVo" />
+		<typeAlias type="com.namyang.community.custinfo.vo.PregnancyScheduleContentVo" alias="pregnancyScheduleContentVo" />
+		
+	</typeAliases>
+
+</configuration>

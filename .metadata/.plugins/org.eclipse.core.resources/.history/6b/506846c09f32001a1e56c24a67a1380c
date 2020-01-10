@@ -1,0 +1,26 @@
+package com.namyang.community.admin.service;
+
+import java.util.List;
+
+import com.namyang.community.admin.vo.GroupMappedVo;
+import com.namyang.community.admin.vo.GroupSearchVo;
+import com.namyang.community.admin.vo.GroupVo;
+import com.namyang.community.menu.service.MenuService;
+
+public interface AdminGroupService extends MenuService {
+
+	public List<GroupVo> getAllGroups(GroupSearchVo groupSearchVo);
+	
+	public boolean insertOneGroup(GroupVo groupVo, List<String> menuIdList);
+	
+	public boolean deleteGroups(List<Integer> deleteGroupIdList);
+
+	public boolean isExistsGroupName(String groupName);
+
+	public GroupVo getOneGroup(int groupId);
+
+	public GroupMappedVo getSelectedMenu(int groupId);
+
+	public boolean updateOneGroup(GroupVo groupVo, List<String> menuId);
+
+}

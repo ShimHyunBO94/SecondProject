@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+ 
+    <description>CommonUtil functions library</description>
+    <display-name>CommonUtil functions</display-name>
+    <tlib-version>1.1</tlib-version>
+    <short-name>cutil</short-name>
+    <uri>tld/CommonUtil.tld</uri>
+ 
+    <function>
+        <description>문자열에 님 붙이기</description>
+        <name>xssFilter</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String xssFilter(java.lang.String)</function-signature>
+        <example>
+        ${cutil:xssFilter(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>현재 날짜</description>
+        <name>getDate</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String getDate(java.lang.String)</function-signature>
+        <example>
+        ${cutil:getDate(format)}
+        </example>
+    </function>
+    
+    <function>
+        <description>현재 날짜</description>
+        <name>replaceAll</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String replaceAll(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+        <example>
+        ${cutil:replaceAll(str, regex, replacement)}
+        </example>
+    </function>
+    
+    <function>
+        <description>전화번호 마스킹</description>
+        <name>phone</name>
+        <function-class>com.namyang.community.common.Masking</function-class>
+        <function-signature>java.lang.String phone(java.lang.String)</function-signature>
+        <example>
+        ${cutil:phone(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>전화번호 마스킹</description>
+        <name>maskingMobile</name>
+        <function-class>com.namyang.community.common.Masking</function-class>
+        <function-signature>java.lang.String maskingMobile(java.lang.String)</function-signature>
+        <example>
+        ${cutil:maskingMobile(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>ID 마스킹</description>
+        <name>masking</name>
+        <function-class>com.namyang.community.common.Masking</function-class>
+        <function-signature>java.lang.String masking(java.lang.String)</function-signature>
+        <example>
+        ${cutil:masking(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>이름 마스킹</description>
+        <name>maskingName</name>
+        <function-class>com.namyang.community.common.Masking</function-class>
+        <function-signature>java.lang.String maskingName(java.lang.String)</function-signature>
+        <example>
+        ${cutil:maskingName(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>withDayOfWeekFormat</description>
+        <name>withDayOfWeekFormat</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String withDayOfWeekFormat(java.lang.String, java.lang.String)</function-signature>
+        <example>
+        ${cutil:withDayOfWeekFormat(date, format)}
+        </example>
+    </function>
+    
+      <function>
+        <description>withDayOfWeek</description>
+        <name>withDayOfWeek</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String withDayOfWeek(java.lang.String)</function-signature>
+        <example>
+        ${cutil:withDayOfWeek(date)}
+        </example>
+    </function>
+    
+    <function>
+        <description>aesDecrypt</description>
+        <name>aesDecrypt</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String decrypt(java.lang.String)</function-signature>
+        <example>
+        ${cutil:aesDecrypt(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>aesEncrypt</description>
+        <name>aesEncrypt</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String encrypt(java.lang.String)</function-signature>
+        <example>
+        ${cutil:aesEncrypt(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>adminHost</description>
+        <name>adminHost</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String getAdminHost()</function-signature>
+        <example>
+        ${cutil:adminHost()}
+        </example>
+    </function>
+    
+    <function>
+        <description>webHost</description>
+        <name>webHost</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String getWebHost()</function-signature>
+        <example>
+        ${cutil:webHost()}
+        </example>
+    </function>
+    
+    <function>
+        <description>urlEnc</description>
+        <name>urlEnc</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String getUrlEncode(java.lang.String)</function-signature>
+        <example>
+        ${cutil:urlEnc(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>makingYear</description>
+        <name>makingYear</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String makingYear(java.lang.String)</function-signature>
+        <example>
+        ${cutil:makingYear(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>maskingEmail</description>
+        <name>maskingEmail</name>
+        <function-class>com.namyang.community.common.Masking</function-class>
+        <function-signature>java.lang.String maskingEmail(java.lang.String)</function-signature>
+        <example>
+        ${cutil:maskingEmail(str)}
+        </example>
+    </function>
+    
+    <function>
+        <description>commonMasking</description>
+        <name>commonMasking</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String commonMasking(java.lang.String, java.lang.String)</function-signature>
+        <example>
+        ${cutil:commonMasking(str, name)}
+        ${cutil:commonMasking(str, id)}
+        ${cutil:commonMasking(str, address)}
+        ${cutil:commonMasking(str, email)}
+        ${cutil:commonMasking(str, phone)}
+        ${cutil:commonMasking(str, tel)}
+        </example>
+    </function>
+    
+    <function>
+        <description>convertYMD</description>
+        <name>convertYMD</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String convertYMD(java.lang.String, java.lang.String)</function-signature>
+        <example>
+        ${cutil:convertYMD(str, '-')}
+        </example>
+    </function>
+    
+    <function>
+        <description>convertStoryContWrite</description>
+        <name>convertStoryContWrite</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String convertStoryContWrite(java.lang.String)</function-signature>
+        <example>
+        ${cutil:convertStoryContWrite(cont)}
+        </example>
+    </function>
+    
+    <function>
+        <description>removeHtmlTag</description>
+        <name>removeHtmlTag</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String removeHtmlTag(java.lang.String)</function-signature>
+        <example>
+        ${cutil:removeHtmlTag(cont)}
+        </example>
+    </function>
+    
+    <function>
+        <description>html2text</description>
+        <name>html2text</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String html2text(java.lang.String)</function-signature>
+        <example>
+        ${cutil:html2text(cont)}
+        </example>
+    </function>
+    
+    <function>
+        <description>getCutStr</description>
+        <name>getCutStr</name>
+        <function-class>com.namyang.community.common.CommonUtil</function-class>
+        <function-signature>java.lang.String getCutStr(java.lang.String)</function-signature>
+        <example>
+        ${cutil:getCutStr(cont)}
+        </example>
+    </function>
+    
+    
+</taglib>

@@ -1,0 +1,29 @@
+package com.ipnc.sample.mapper;
+
+import java.util.List;
+
+import com.namyang.community.admin.vo.GroupMappedVo;
+import com.namyang.community.admin.vo.GroupSearchVo;
+import com.namyang.community.admin.vo.GroupVo;
+
+public interface SampleServiceImpl {
+
+	public List<GroupVo> getAllGroups(GroupSearchVo groupSearchVo);
+	
+	public int insertOneGroup(GroupVo groupVo);
+	
+	public int insertOneGroupMappedMenu(GroupMappedVo groupMap);
+	
+	public int deleteGroups(List<Integer> deleteGroupIdList);
+
+	public int isExistsGroupName(String groupName);
+
+	public GroupVo getOneGroup(int groupId);
+
+	public GroupMappedVo getSelectedMenu(int groupId);
+
+	public int updateOneGroup(GroupVo groupVo);
+
+	public int deleteGroupMappedMenu(int groupId);
+
+}

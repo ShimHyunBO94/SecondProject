@@ -1,0 +1,79 @@
+package com.namyang.community.admin.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.namyang.community.admin.mapper.AdminGroupMapper;
+import com.namyang.community.admin.vo.GroupMappedVo;
+import com.namyang.community.admin.vo.GroupSearchVo;
+import com.namyang.community.admin.vo.GroupVo;
+import com.namyang.community.menu.service.MenuServiceImpl;
+import com.namyang.community.menu.vo.MenuVo;
+
+@Service
+@Transactional(rollbackFor=RuntimeException.class)
+public class AdminGroupServiceImpl extends MenuServiceImpl implements AdminGroupService {
+
+	@Autowired
+	private AdminGroupMapper adminGroupMapper;
+
+	@Override
+	public List<GroupVo> getAllGroups(GroupSearchVo groupSearchVo) {
+		return adminGroupMapper.getAllGroups(groupSearchVo);
+	}
+
+	@Override
+	public boolean insertOneGroup(GroupVo groupVo, List<String> menuIdList) {
+		if ( adminGroupMapper.insertOneGroup(groupVo) > 0 ) {
+			return insertOneGroupMappedMenu(groupVo, menuIdList);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteGroups(List<Integer> deleteGroupIdList) {
+		for (int groupId : deleteGroupIdList) {
+			adminGroupMapper.deleteGroupMappedMenu(groupId);
+		}
+		
+		return adminGroupMapper.deleteGroups(deleteGroupIdList) > 0;
+	}
+
+	@Override
+	public boolean isExistsGroupName(String groupName) {
+		return adminGroupMapper.isExistsGroupName(groupName) > 0;
+	}
+
+	@Override
+	public GroupVo getOneGroup(int groupId) {
+		return adminGroupMapper.getOneGroup(groupId);
+	}
+
+	@Override
+	public GroupMappedVo getSelectedMenu(int groupId) {
+		return adminGroupMapper.getSelectedMenu(groupId);
+	}
+
+	@Override
+	public boolean updateOneGroup(GroupVo groupVo, List<String> menuId) {
+		if ( adminGroupMapper.updateOneGroup(groupVo) > 0 ) {
+			
+			adminGroupMapper.deleteGroupMappedMenu(groupVo.getGroupId());
+			return insertOneGroupMappedMenu(groupVo, menuId);
+		}
+		return false;
+	}
+	
+	private boolean insertOneGroupMappedMenu(GroupVo groupVo, List<String> menuId) {
+		GroupMappedVo groupMap = new GroupMappedVo();
+		groupMap.setGroupId(groupVo.getGroupId());
+		groupMap.setMenuList(menuId.stream().map(id -> new MenuVo(id)).collect(Collectors.toList()));
+		
+		return adminGroupMapper.insertOneGroupMappedMenu(groupMap) > 0;
+	}
+	
+}
